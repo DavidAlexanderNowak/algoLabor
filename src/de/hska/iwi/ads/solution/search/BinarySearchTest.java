@@ -14,11 +14,44 @@ public class BinarySearchTest extends SearchTest {
 		return new BinarySearch<E>();
 	}
 
-//	@Test
-//	void keyToTheLeftOfArray_SHOULD_returnSpecifiedValue() {
-//		Search<Integer> search = createSearch();
-//		Integer[] a = { 2, 4, 7, 8, 9, 10, 11 };
-//
-//		assertEquals(-1, search.search(a, 1));
-//	}
+	@Test
+	void keyToTheLeftOfArray_SHOULD_returnSpecifiedValue() {
+		Search<Integer> search = createSearch();
+		Integer[] a = { 2, 4, 7, 8, 9, 10, 11 };
+
+		assertEquals(-1, search.search(a, 1));
+	}
+
+	@Test
+	void testSimple() {
+		Search<Integer> search = createSearch();
+		Integer[] a = { 0, 2, 4, 7, 9, 10, 11 };
+
+		assertEquals(2, search.search(a, 4));
+	}
+
+	@Test
+	void lowestIndex() {
+		Search<Integer> search = createSearch();
+		Integer[] a = { 4, 4, 4, 4, 4, 4 };
+
+		assertEquals(0, search.search(a, 4));
+	}
+
+	@Test
+	void firstCase() {
+		Search<Integer> search = createSearch();
+		Integer[] a = { 2, 2, 4, 6 };
+
+		assertEquals(-1, search.search(a, 1));
+	}
+
+	@Test
+	void secondCase() {
+		Search<Integer> search = createSearch();
+		Integer[] a = { 2, 2, 4, 6 };
+
+		assertEquals(4, search.search(a, 8));
+	}
+	
 }
