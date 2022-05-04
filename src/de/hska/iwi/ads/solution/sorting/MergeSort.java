@@ -1,9 +1,20 @@
 package de.hska.iwi.ads.solution.sorting;
 
-public class MergeSort<E extends Comparable<E>> extends AbstractMergeSortImpl<E> {
+import de.hska.iwi.ads.sorting.AbstractMergesort;
+
+public class MergeSort<E extends Comparable<E>> extends AbstractMergesort<E> {
 
 	@Override
-	protected void merge(E[] a, int left, int midIndex, int right) {
+	protected void mergesort(E[] a, int left, int right) {
+		if (left < right) {
+			int midIndex = (left + right) / 2;
+			mergesort(a, left, midIndex);
+			mergesort(a, midIndex + 1, right);
+			merge(a, left, midIndex, right);
+		}
+	}
+
+	private void merge(E[] a, int left, int midIndex, int right) {
 		int l = left;
 		int r = midIndex + 1;
 		for (int i = left; i <= right; i++) {
